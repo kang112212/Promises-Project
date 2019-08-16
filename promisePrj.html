@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <!-- FORM START -->
+    <div class="form-group">
+      <label>User Name</label>
+      <input id="guessInput" type="search" class="form-control"  placeholder="Enter Username">
+    <button id="guessBut" onclick="getUsers()" class="btn btn-primary">Submit</button>
+  </div>
+<!-- FORM END -->
+
+<!-- OUTPUT START -->
+<p><strong>User Name Input:</strong></p>
+<div id="userName"></div>
+<p><strong>Name Selected:</strong></p>
+<div id="name"></div>
+<p><strong>Album Title Selected:</strong></p>
+<div id="albumTitle"></div>
+<p><strong>Post Title Selected:</strong></p>
+<div id="postTitle"></div>
+
+  <script>
+// BUTTON
+var newUserObj;
+var indexI = Number(newUserObj)-1;
+console.log(indexI)
+console.log(newUserObj)
+let guessValue;
+let getUsers = () => {
+  guessValue = document.getElementById('guessInput').value;
+
+  $.get("http://jsonplaceholder.typicode.com/users", (data)=>{
+    console.log(data);
+    let newUserObj = data.find((user) => {
+        return user.username === guessValue;
+    })
+    console.log(newUserObj.id)
+  })
+
+}
+  document.getElementById("guessBut").addEventListener("click", getUsers());
+
+// // GET ID
+
+
+
+  var brettsID="";
+  $.get('http://jsonplaceholder.typicode.com/users', function(data){
+    brettsID = data[newUserObj.id].username;
+    let userName = document.getElementById("userName");
+
+    document.getElementById("guessBut").addEventListener("click", compareGuess);
+
+
+    function compareGuess (){
+      if (guessValue == brettsID){
+        userName.innerHTML = data[newUserObj.id].username
+      } else {
+        userName.innerHTML = 'Wrong User'
+
+      }
+    }
+    });
+
+  let userEl = document.getElementById("name")
+  $.get('http://jsonplaceholder.typicode.com/users', function(data){
+  	console.log(data[newUserObj.id].name);
+    userEl.innerHTML = data[newUserObj.id].name
+      });
+
+  let albumEl = document.getElementById("albumTitle")
+  $.get('http://jsonplaceholder.typicode.com/albums', function(data){
+    console.log(data[newUserObj.id].title);
+    albumEl.innerHTML = data[newUserObj.id].title
+  });
+
+  let postEl = document.getElementById("postTitle")
+  $.get('http://jsonplaceholder.typicode.com/posts', function(data){
+  	console.log(data[newUserObj.id].title);
+    postEl.innerHTML = data[newUserObj.id].title
+  });
+
+  </script>
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
