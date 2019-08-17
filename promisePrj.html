@@ -33,7 +33,7 @@
   <script>
 // BUTTON
 var newUserObj;
-var indexI = Number(newUserObj)-1;
+var indexI = newUserObj
 console.log(indexI)
 console.log(newUserObj)
 let guessValue;
@@ -45,51 +45,48 @@ let getUsers = () => {
     let newUserObj = data.find((user) => {
         return user.username === guessValue;
     })
+    var brettsID="";
+    $.get('http://jsonplaceholder.typicode.com/users', function(data){
+      brettsID = data[newUserObj.id-1].username;
+
+      let userName = document.getElementById("userName");
+
+        if (guessValue == brettsID){
+          userName.innerHTML = data[newUserObj.id-1].username
+        } else {
+          userName.innerHTML = 'Wrong User'
+          }
+
+      });
+
+    let userEl = document.getElementById("name")
+    $.get('http://jsonplaceholder.typicode.com/users', function(data){
+      console.log(data[newUserObj.id-1].name);
+      userEl.innerHTML = data[newUserObj.id-1].name
+        });
+
+    let albumEl = document.getElementById("albumTitle")
+    $.get('http://jsonplaceholder.typicode.com/albums', function(data){
+      console.log(data[newUserObj.id-1].title);
+      albumEl.innerHTML = data[newUserObj.id-1].title
+    });
+
+    let postEl = document.getElementById("postTitle")
+    $.get('http://jsonplaceholder.typicode.com/posts', function(data){
+      console.log(data[newUserObj.id-1].title);
+      postEl.innerHTML = data[newUserObj.id-1].title
+    });
     console.log(newUserObj.id)
   })
 
 }
-  document.getElementById("guessBut").addEventListener("click", getUsers());
+
 
 // // GET ID
 
 
 
-  var brettsID="";
-  $.get('http://jsonplaceholder.typicode.com/users', function(data){
-    brettsID = data[newUserObj.id].username;
-    let userName = document.getElementById("userName");
 
-    document.getElementById("guessBut").addEventListener("click", compareGuess);
-
-
-    function compareGuess (){
-      if (guessValue == brettsID){
-        userName.innerHTML = data[newUserObj.id].username
-      } else {
-        userName.innerHTML = 'Wrong User'
-
-      }
-    }
-    });
-
-  let userEl = document.getElementById("name")
-  $.get('http://jsonplaceholder.typicode.com/users', function(data){
-  	console.log(data[newUserObj.id].name);
-    userEl.innerHTML = data[newUserObj.id].name
-      });
-
-  let albumEl = document.getElementById("albumTitle")
-  $.get('http://jsonplaceholder.typicode.com/albums', function(data){
-    console.log(data[newUserObj.id].title);
-    albumEl.innerHTML = data[newUserObj.id].title
-  });
-
-  let postEl = document.getElementById("postTitle")
-  $.get('http://jsonplaceholder.typicode.com/posts', function(data){
-  	console.log(data[newUserObj.id].title);
-    postEl.innerHTML = data[newUserObj.id].title
-  });
 
   </script>
 
