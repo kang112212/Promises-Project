@@ -1,0 +1,40 @@
+body {
+  background-color: #faeaea;
+  overflow-x: hidden;
+}
+#container {
+  max-width: 80%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#outputBorder {
+  border: solid 1px black;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+#entUsername {
+  margin-right: 5px;
+}
+footer {
+  background-color: #2e3b7d;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+footer ul li {
+  display: inline-block;
+}
+footer ul {
+  text-align: center;
+}
+.fab {
+  color: #faeaea;
+  margin-top: 10px;
+}
+.fab:hover {
+  color: red;
+}

@@ -21,26 +21,13 @@ let getUsers = () => {
         userName.innerHTML = 'Wrong User';
       }
     });
-
-    function please(result) {
-      try {
-        if ((newUserObj == undefined)) {
-          throw ('New exception');
-        }
-      } catch (err) {
-        userName.innerHTML = 'Wrong User LOOK IM AN ERROR MESSAGE!';
-      };
-    }
-    please();
     let userEl = document.getElementById("name");
     $.get('http://jsonplaceholder.typicode.com/users', function(data) {
-      console.log(data[newUserObj.id - 1].name);
       userEl.innerHTML = data[newUserObj.id - 1].name;
     });
 
     let albumEl = document.getElementById("albumTitle");
     $.get('http://jsonplaceholder.typicode.com/albums', function(data) {
-      console.log(data[newUserObj.id - 1].title);
       albumEl.innerHTML = data[newUserObj.id - 1].title;
     });
 
@@ -49,6 +36,19 @@ let getUsers = () => {
       console.log(data[newUserObj.id - 1].title);
       postEl.innerHTML = data[newUserObj.id - 1].title;
     });
-    console.log(newUserObj.id);
+
+    function please(result) {
+      try {
+        if ((newUserObj == undefined)) {
+          throw ('New exception');
+        }
+      } catch (err) {
+        userName.innerHTML = 'I believe you have entered the wrong username. Please try again.';
+        userEl.innerHTML = "";
+        albumEl.innerHTML = "";
+        postEl.innerHTML = "";
+      }
+    }
+    please();
   });
 };

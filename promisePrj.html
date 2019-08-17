@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="https://kit.fontawesome.com/05f12e3228.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="./promises.css">
 </head>
 <body>
-
+<div id="container">
+  <h1>To Search The JSONPlaceholder API Website</h1>
   <!-- FORM START -->
     <div class="form-group">
-      <label>User Name</label>
+      <label id="entUsername">Enter your username here:</label>
       <input id="guessInput" type="search" class="form-control"  placeholder="Enter Username">
     <button id="guessBut" onclick="getUsers()" class="btn btn-primary">Submit</button>
   </div>
 <!-- FORM END -->
 
 <!-- OUTPUT START -->
+<div id="outputBorder">
 <p><strong>User Name Input:</strong></p>
 <div id="userName"></div>
 <p><strong>Name Selected:</strong></p>
@@ -29,9 +32,17 @@
 <div id="albumTitle"></div>
 <p><strong>Post Title Selected:</strong></p>
 <div id="postTitle"></div>
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="./promises.js"></script> 
+  <script src="./promises.js"></script>
+</div>
+<footer>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/corey-hawkins-83ab1975/" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a></li>
+    <li><a href="https://github.com/kang112212" target="_blank"><i class="fab fa-github fa-3x"></i></a></li>
+  </ul>
+</footer>
 </body>
 </html>
