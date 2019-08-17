@@ -54,11 +54,20 @@ let getUsers = () => {
         if (guessValue == brettsID){
           userName.innerHTML = data[newUserObj.id-1].username
         } else {
-          userName.innerHTML = 'Wrong User'
+          userName.innerHTML = 'Wrong User';
           }
 
       });
-
+      function please (result) {
+          try {
+            if ((newUserObj == undefined)) {
+               throw ('New exception');
+            }
+          } catch (err) {
+            userName.innerHTML = 'Wrong User LOOK IM AN ERROR MESSAGE!'
+          };
+      }
+please()
     let userEl = document.getElementById("name")
     $.get('http://jsonplaceholder.typicode.com/users', function(data){
       console.log(data[newUserObj.id-1].name);
@@ -82,8 +91,20 @@ let getUsers = () => {
 }
 
 
-// // GET ID
 
+// success: function (result) {
+//     try {
+//       result = jQuery.parseJSON(result);
+//
+//       if (!result.data.email) {
+//          throw ('New exception');
+//       }
+//       console.log(result);
+//       jQuery('.email').html(result.data.email);
+//     } catch (exception) {
+//       console.error("bla");
+//     };
+// }
 
 
 
